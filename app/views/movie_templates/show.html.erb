@@ -70,12 +70,8 @@
       Director
     </dt>
     <dd>
-
-      <% d_id = @the_movie.director_id %>
-        
-      <% matching_directors = Director.where({ :id => d_id }) %>
       
-      <% the_director = matching_directors.at(0) %>
+      <% the_director = @the_movie.director %>
 
       <% if the_director != nil %>
         <a href="/directors/<%= the_director.id %>">
