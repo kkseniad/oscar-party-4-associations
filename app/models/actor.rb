@@ -14,4 +14,6 @@
 class Actor < ApplicationRecord
   validates(:first_name, presence: true)
   validates(:last_name, presence: true)
+
+  has_many(:credits, class_name: "Credit", foreign_key: "actor_id", primary_key: "id")
 end
