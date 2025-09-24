@@ -96,16 +96,12 @@
     <h2>Cast</h2>
   </header>
   <ul>
-    <% m_id = @the_movie.id %>
-
-    <% matching_credits = Credit.where({ :movie_id => m_id }) %>
+    
+    <% matching_credits = @the_movie.credits %>
 
     <% matching_credits.each do |a_credit| %>
-      <% a_id = a_credit.actor_id %>
       
-      <% matching_actors = Actor.where({ :id => a_id }) %>
-      
-      <% the_actor = matching_actors.at(0) %>
+      <% the_actor = a_credit.actor %>
 
       <% if the_actor.present? %>
         <li>

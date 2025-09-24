@@ -82,7 +82,7 @@
 <hr>
 
 <h3>Current Filmography</h3>
-<% credits = Credit.where({ :actor_id => @the_actor.id }) %>
+<% credits = @the_actor.credits %>
 <% if credits.any? %>
   <div class="overflow-auto">
     <table style="width: 100%; margin-top: 1rem;">
@@ -95,11 +95,8 @@
       </thead>
       <tbody>
         <% credits.each do |credit| %>
-          <% m_id = credit.movie_id %>
 
-          <% matching_movies = Movie.where({ :id => m_id }) %>
-
-          <% movie = matching_movies.at(0) %>
+          <% movie = credit.movie %>
           <tr>
             <td>
               <% if movie.present? %>
